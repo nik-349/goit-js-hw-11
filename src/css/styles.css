@@ -70,7 +70,7 @@ button {
   cursor: pointer;
 }
 
-button::before {
+.button-search::before {
   content: '\f002';
   font-family: FontAwesome;
   font-size: 16px;

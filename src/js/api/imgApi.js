@@ -23,6 +23,10 @@ refs.btn.addEventListener('click', onSearch);
 
 async function onSearch(evt) {
     evt.preventDefault();
+    if (refs.searchForm.searchQuery.value === '') {
+        Notify.warning('You need to enter what you want')
+        return
+    }
 
     imagesApiService.searchQuery = refs.searchForm.searchQuery.value;
     
@@ -56,11 +60,11 @@ function galleryCardsMarkup(items) {
 }
 
 const onEntry = (entries) => {
+    
     entries.forEach(async (entry) => {
         try {
             if (entry.isIntersecting && imagesApiService.searchQuery !== '') {
-                console.log('😉 Loading more pictures!');
-
+            
                 imagesApiService.incrementPage();
 
                 const getImages = await imagesApiService.fetchImg();
@@ -79,8 +83,8 @@ const onEntry = (entries) => {
 
 const options = {
     rootMargin: '150px',
-    // threshold: 0.5,
 };
+
 
 const observer = new IntersectionObserver(onEntry, options);
 observer.observe(refs.loading);
