@@ -74,6 +74,8 @@ button {
   content: '\f002';
   font-family: FontAwesome;
   font-size: 16px;
+  color: #ebcc04;
+  
 }
 
 .card-set {
